@@ -1,10 +1,28 @@
 /**
- * The HelloWorld program implements an application that
- * simply displays "Hello World!" to the standard output.
+ * The E=MC^2 program
  *
  * By:      Devin Jhu
  * Version: 1.0
- * Since:   2020-01-01
+ * Since:   2022-10-19
  */
-console.log('Hello, World!')
+
+import promptSync from 'prompt-sync'
+const prompt = promptSync()
+const speedOfLight = (2.998 * 10 ** 8) ** 2
+const massAmountString = prompt('input mass (kg): ')
+try {
+  const massAmount = parseFloat(massAmountString)
+  if (isNaN(massAmount)) {
+    throw new Error('not a number')
+  }
+  if (massAmount <= 0) {
+    throw new Error('negative number')
+  }
+
+  const energy = massAmount * speedOfLight
+  console.log(`the energy produced is ${energy} J`)
+} catch (e) {
+  console.log('not a number')
+}
+
 console.log('\ndone.')
